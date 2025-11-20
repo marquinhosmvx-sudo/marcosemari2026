@@ -1,0 +1,19 @@
+name: Extract RAR file
+
+on:
+  workflow_dispatch: # Permite executar o workflow manualmente na interface do GitHub
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest # Usa o sistema operacional Ubuntu Linux
+
+    steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v4 # Clona o repositório para o executor
+
+    - name: Install unrar
+      run: sudo apt-get update && sudo apt-get install -y unrar # Instala o utilitário unrar
+
+    - name: Extract the RAR file
+      run: unrar x nome_do_seu_arquivo.rar caminho/para/diretorio_de_destino/ # Comando para extrair
+      # Substitua 'nome_do_seu_arquivo.rar' e 'caminho/para/diretorio_de_destino/' pelos seus dados reais
